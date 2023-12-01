@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/ico" href="ll.png">
+    <title>个人主页</title>
+    <!-- 引入Bootstrap icon图标库 -->
+    <link rel="stylesheet" href="ll.png">
+
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="homepage.js"></script>
+</head>
+
+<body>
+    <div id="main-box">
+        <div id="head">
+            <img id="touxiang" src="888.png">
+            <p id="nick">肖汝乐大帅哥</p>
+            <!-- 调用一言文字API ，如不使用请将此段注释掉，并将下段的注释取消掉 -->
+            <p id="info"><span id="hitokoto_text">ヾ(•ω•`)o加载中……</span></p>
+            <!-- 显示自定义一段文字 -->
+            <!-- <p id="info">凡是美好 都留有遗憾</p> -->
+            <div id="time"></div>
+        </div>
+        <div id="main-1">
+            <p class="title">[ 我的网站 ]</p>
+            <!-- 如果你要更换卡片背景图的话
+                        背景图大小为：180×70 （高斯模糊效果需要自己添加）-->
+            <p class="kapian" style="background: url(demo.jpg) center;">
+                <a href="#" target="_blank" style="color: #000;">
+                    <span class="kapian-title"><i class="bi bi-github"></i> 暂无</span>
+                </a>
+            </p>
+            <p class="kapian" style="background: url(fwq.jpg) center;">
+                <a href="#" target="_blank" style="color: #000;">
+                    <span class="kapian-title"><i class="bi bi-github"></i> 暂无</span>
+                </a>
+            </p>
+        </div>
+        <div id="main-2">
+            <p class="main-2-text">
+                <i class="bi bi-gender-male" style="color: blue;"></i>
+                性别：男
+            </p>
+            <p class="main-2-text">
+                <i class="bi bi-activity" style="color: #ff3d00;"></i>
+                年龄：17658岁
+            </p>
+            <p class="main-2-text">
+                <i class="bi bi-geo-alt-fill" style="color: #304ffe;"></i>
+                老弟：周世林
+            </p>
+            <p class="main-2-text">
+                <i class="bi bi-app-indicator" style="color: #dd2c00;"></i>
+                状态：运气加持（<span style="color: red;">修炼中</span>）
+            </p>
+            <p class="main-2-text">
+                <i class="bi bi-chat-dots-fill" style="color: #00c853;"></i>
+                QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=368999509&site=qq&menu=yes" target="_blank">368999509</a>
+            </p>
+            <p class="main-2-text">
+                <i class="bi bi-envelope"></i>
+                Email：<a href=" target=" _blank">368999509@qq.com</a>
+            </p>
+        </div>
+        <div id="main-3">
+            <p class="title">[ 技术支持 ]</p>
+            <!-- 如果你要更换卡片背景图的话
+                        背景图大小为：180×70 （高斯模糊效果需要自己添加，最好在背景图周围添加一点淡淡的白色，这样效果更加~）-->
+            <p class="kapian" style="background: url(boke.jpg) center;">
+                <a href="https://lhopoa.github.io/Yxiaoli/" target="_blank" style="color: #000;">
+                    <span class="kapian-title"><i class="bi bi-journal-richtext"></i>陵寒博客</span>
+                </a>
+            </p>
+            <p class="kapian" style="background: url(i.jpg) center;">
+                <a href="https://fx.youfanli.com/landing_page?invite_id=9651498&p_id=2" target="_blank" style="color: #000;">
+                    <span class="kapian-title"><i class="bi bi-heart"></i>广告</span>
+                </a>
+            </p>
+        </div>
+        <div id="footer">
+            &copy;2023 <a href="#" style="color: #000;">LHopoa 陵寒云 技术支持</a>
+        </div>
+    </div>
+    <!-- 一言API -->
+    <!-- 如果不启用API请将整段 script 注释掉 -->
+    <script>
+        // 代表引用来自网络相关的文案
+        fetch('https://v1.hitokoto.cn/?j=k')
+            .then(response => response.json())
+            .then(data => {
+                const hitokoto = document.getElementById('hitokoto_text')
+                hitokoto.innerText = data.hitokoto
+            })
+
+        function updateTime() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var weekDay = date.getDay();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+
+            var weekDays = ['难过星期日', '黑色星期一', '痛苦星期二', '焦虑星期三', '疯狂星期四', '快乐星期五', '愉悦星期六'];
+
+            var timeString = year + '年' + month + '月' + day + '日 ' + weekDays[weekDay] + ' ' + hours + ':' + minutes + ':' + seconds;
+
+            document.getElementById('time').innerText = timeString;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+
+</html>
